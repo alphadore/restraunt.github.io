@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OVADOUR</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #010f23;
+      color: #ffffff;
+      padding-left: 160px;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: pageFadeIn 1.1s ease-out forwards;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .headers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      justify-content: center;
+    }
+
+    .headers a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 1.4rem;
+      margin-left: 5rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-family: 'Courier New', Courier, monospace;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .headers a:hover {
+      color: #FFD700;
+    }
+
+    #res {
+      border: 1px solid #FFD700;
+    }
+
+    .name-strip {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 160px;
+      background-color: #000;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .name {
+      transform: rotate(-90deg);
+      font-family: 'Playfair Display', serif;
+      font-size: 9rem;
+      letter-spacing: 4px;
+      font-weight: 400;
+      color: #FFD700;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero {
+      min-height: calc(100vh - 120px);
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      padding: 4rem 6rem;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 520px;
+    }
+
+    .hero small {
+      color: #FFD700;
+      letter-spacing: 3px;
+      font-size: 0.9rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 500;
+      margin: 1rem 0;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2.5rem;
+    }
+
+    .accent-line {
+      width: 80px;
+      height: 2px;
+      background: #FFD700;
+      margin: 1.5rem 0;
+    }
+
+    
+
+    .feature-card {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,215,0,0.35);
+      padding: 2rem;
+      margin-top: 3rem;
+      max-width: 420px;
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255,215,0,0.08);
+      transform: translateY(-3px);
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      color: #FFD700;
+    }
+
+    .feature-card span {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.7);
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .hero-video {
+      flex: 1;
+      max-width: 900px;
+      border: 1px solid rgba(255,215,0,0.35);
+      overflow: hidden;
+      background: #000;
+      border-radius: 8px;
+    }
+
+    .hero-video video {
+      width: 70vw;
+      height: 70vh;
+      object-fit: cover;
+      display: block;
+      filter: opacity(80%);
+    }
+
+    @media (max-width: 1024px) {
+      body {
+        padding-left: 120px;
+      }
+
+      .name-strip {
+        width: 120px;
+      }
+
+      .name {
+        font-size: 6.5rem;
+      }
+
+      .hero {
+        padding: 3rem;
+        gap: 3rem;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-left: 0;
+      }
+
+      .name-strip {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .hero-content,
+      .hero-video {
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .feature-card {
+        max-width: 100%;
+      }
+    }
+
+    
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .scroller a {
+      color: white;
+      text-decoration: none;
+
+    }
+    .hero-content a{
+      text-decoration: none;
+      color: inherit;
+      cursor:text;
+    }
+    .hero-content a:hover{
+      color:#FFD700;
+    }
+
+    @keyframes pageFadeIn {
+      from{
+        opacity: 0;
+        transform: translateY(12px);
+      }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+    }
+
+
+    
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="headers">
+      <a href="menuex.html">Menu</a>
+      <a href="story.html">Story</a>
+      <a href="location.html">Locations</a>
+      <a href="reservation.html" id="res">Reservations</a>
+    </div>
+  </nav>
+
+  <div class="name-strip">
+    <div class="name">OVADOUR</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <small>MODERN • BOLD • INDULGENT</small>
+      <a href=''><h1>Where Comfort Meets Craft</h1></a>
+      <div class="accent-line"></div>
+      <p>
+        At OVADOUR, we serve soulful dishes rooted in tradition,
+        elevated with modern technique and unapologetic flavor.
+      </p>
+
+      
+      <div class="feature-card" onclick="location.href='menuex.html'">
+        <span>DISCOVER</span>
+        <h3>Explore Our Menu</h3>
+        <p>
+          From slow-cooked classics to bold new plates —
+          discover what defines the OVADOUR experience.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="cooking.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    
+  </section>
+
+</body>
+</html>
