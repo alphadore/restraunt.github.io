@@ -42,7 +42,7 @@ This project was created as a learning exercise to improve frontend basics and u
 
 ## 🚀 Live Demo
 
-(Add your live link here)
+https://alphadore.github.io/restraunt.github.io/
 
 ---
 
